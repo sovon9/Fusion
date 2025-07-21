@@ -1,0 +1,1 @@
+{ "subgraph": "activities", "http": { "baseAddress": "http://localhost:5001/graphql" } }
