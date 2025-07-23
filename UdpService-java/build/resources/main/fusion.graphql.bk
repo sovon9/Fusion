@@ -1,0 +1,13 @@
+directive @key(fields: String!) on OBJECT | INTERFACE
+
+type Review @key(fields: "productId")
+{
+    productId: ID!
+    rating: Int
+    comment: String
+}
+
+type  Query
+{
+    reviews: [Review]
+}

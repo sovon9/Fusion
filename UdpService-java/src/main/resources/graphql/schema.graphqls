@@ -1,0 +1,44 @@
+#directive @lookup(by: String!) on FIELD_DEFINITION
+#directive @shareable repeatable on OBJECT | FIELD_DEFINITION
+#
+#type Query {
+#  udpValues: [Udp]
+#  udpValuesByActivityId(activityId: ID!): [Udp!]! @lookup(by: "activityId")
+#}
+#
+#type Udp {
+#  id: ID!
+#  desc: String
+#  value: String
+#  activityId: ID! @shareable
+#}
+#
+#type Activity {
+#  id: ID!
+#}
+#
+#extend type Activity {
+#  udpValues: [Udp!]! @lookup(by: "activityId")
+#}
+directive @lookup(by: String) on FIELD_DEFINITION
+
+type Review
+{
+  productId: ID!
+  rating: Int
+  comment: String
+}
+
+type  Query
+{
+  reviews: [Review]
+  reviewsByProductId(productId: ID!): [Review!]! @lookup
+}
+
+type Product {
+  id: ID!
+}
+
+extend type Product {
+  reviews: [Review!]! #@lookup(by: "productId")
+}
