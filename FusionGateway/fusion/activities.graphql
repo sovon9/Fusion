@@ -1,5 +1,0 @@
-schema
-  @http(
-    base: "http://localhost:5001/graphql"
-  )
-  @link(name: "activities")
