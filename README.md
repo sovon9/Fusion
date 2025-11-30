@@ -7,5 +7,5 @@ fusion implementation
 ```
 # Generate fgp file
 ```
-fusion compose -p ./supergraph/gateway -s ./subgraph/mes-service
+fusion compose -p ./supergraph/gateway -s ./subgraph/employee-service
 ```
