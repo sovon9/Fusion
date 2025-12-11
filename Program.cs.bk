@@ -1,0 +1,19 @@
+using HotChocolate.Fusion;
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.WebHost.UseUrls("http://localhost:5000");
+
+// If downstream schemas require HTTP calls:
+builder.Services.AddHttpClient("fusion");
+
+// Register and configure the Fusion gateway
+builder.Services
+    .AddFusionGatewayServer()
+    .ConfigureFromFile("fusion/gateway.fgp");
+
+// Build and map endpoint
+var app = builder.Build();
+
+app.MapGraphQL();
+app.Run();
